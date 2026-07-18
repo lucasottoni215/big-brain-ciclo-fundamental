@@ -1,0 +1,9 @@
+{
+  "name": "Big Brain - Sincronizar referencias",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figjam"],
+  "networkAccess": {
+    "allowedDomains": ["https://lucasottoni215.github.io"]
+  }
+}
