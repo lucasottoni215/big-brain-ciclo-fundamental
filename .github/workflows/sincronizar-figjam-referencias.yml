@@ -22,7 +22,6 @@ jobs:
             exit 1
           fi
           node <<'NODE'
-          (async () => {
           const fs = require("fs");
           const crypto = require("crypto");
 
@@ -41,13 +40,21 @@ jobs:
 
           const notas = new Map();
           for (const [arquivo, itens] of porArquivo) {
-            const ids = itens.map(([, referencia]) => referencia.figjam.nota).join(",");
-            const resposta = await fetch(`https://api.figma.com/v1/files/${arquivo}/nodes?ids=${encodeURIComponent(ids)}`, {
+            const resposta = await fetch(`https://api.figma.com/v1/files/${arquivo}?depth=4`, {
               headers: { "X-Figma-Token": process.env.FIGMA_TOKEN }
             });
             if (!resposta.ok) throw new Error(`Falha ao ler FigJam: ${resposta.status}`);
             const corpo = await resposta.json();
-            for (const [, referencia] of itens) notas.set(referencia.figjam.nota, corpo.nodes?.[referencia.figjam.nota]?.document || null);
+            const localizar = (no, id) => {
+              if (!no) return null;
+              if (no.id === id) return no;
+              for (const filho of no.children || []) {
+                const encontrado = localizar(filho, id);
+                if (encontrado) return encontrado;
+              }
+              return null;
+            };
+            for (const [, referencia] of itens) notas.set(referencia.figjam.nota, localizar(corpo.document, referencia.figjam.nota));
           }
 
           const hex = (canal) => Math.round(canal * 255).toString(16).padStart(2, "0");
@@ -88,7 +95,6 @@ jobs:
 
           estado.atualizadoEm = new Date().toISOString();
           fs.writeFileSync(caminho, JSON.stringify(estado, null, 2) + "\n");
-          })().catch((erro) => { console.error(erro); process.exit(1); });
           NODE
       - name: Registrar sincronizacao
         run: |
