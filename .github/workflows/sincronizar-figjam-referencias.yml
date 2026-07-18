@@ -1,0 +1,101 @@
+name: Sincronizar referencias FigJam
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar referencias e atualizar cores
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: |
+          if [ -z "$FIGMA_TOKEN" ]; then
+            echo "O segredo FIGMA_TOKEN ainda nao foi configurado."
+            exit 1
+          fi
+          node <<'NODE'
+          const fs = require("fs");
+          const crypto = require("crypto");
+
+          const caminho = "state/figjam-referencias.json";
+          const estado = JSON.parse(fs.readFileSync(caminho, "utf8"));
+          const referencias = Object.entries(estado.referencias || {});
+          const porArquivo = new Map();
+
+          for (const [chave, referencia] of referencias) {
+            const arquivo = referencia.figjam?.arquivo;
+            const nota = referencia.figjam?.nota;
+            if (!arquivo || !nota) continue;
+            if (!porArquivo.has(arquivo)) porArquivo.set(arquivo, []);
+            porArquivo.get(arquivo).push([chave, referencia]);
+          }
+
+          const notas = new Map();
+          for (const [arquivo, itens] of porArquivo) {
+            const ids = itens.map(([, referencia]) => referencia.figjam.nota).join(",");
+            const resposta = await fetch(`https://api.figma.com/v1/files/${arquivo}/nodes?ids=${encodeURIComponent(ids)}`, {
+              headers: { "X-Figma-Token": process.env.FIGMA_TOKEN }
+            });
+            if (!resposta.ok) throw new Error(`Falha ao ler FigJam: ${resposta.status}`);
+            const corpo = await resposta.json();
+            for (const [, referencia] of itens) notas.set(referencia.figjam.nota, corpo.nodes?.[referencia.figjam.nota]?.document || null);
+          }
+
+          const hex = (canal) => Math.round(canal * 255).toString(16).padStart(2, "0");
+          for (const [, referencia] of referencias) {
+            const { arquivo, marcador, assinatura } = referencia.prototipo || {};
+            const inicio = `<!-- figjam-ref:start ${marcador} -->`;
+            const fim = `<!-- figjam-ref:end ${marcador} -->`;
+            const fonte = arquivo && fs.existsSync(arquivo) ? fs.readFileSync(arquivo, "utf8") : "";
+            const de = fonte.indexOf(inicio);
+            const ate = de < 0 ? -1 : fonte.indexOf(fim, de);
+            const trecho = ate < 0 ? null : fonte.slice(de, ate + fim.length);
+            const hash = trecho ? crypto.createHash("sha256").update(trecho).digest("hex") : null;
+            const nota = notas.get(referencia.figjam?.nota);
+
+            if (!trecho || hash !== assinatura) {
+              referencia.status = "revisao_necessaria";
+              referencia.integridade = "prototipo_alterado";
+              referencia.cor = null;
+              continue;
+            }
+            if (!nota) {
+              referencia.status = "revisao_necessaria";
+              referencia.integridade = "nota_ausente";
+              referencia.cor = null;
+              continue;
+            }
+            const preenchimento = (nota.fills || []).find((item) => item.type === "SOLID" && item.visible !== false);
+            if (!preenchimento?.color) {
+              referencia.status = "revisao_necessaria";
+              referencia.integridade = "nota_sem_cor";
+              referencia.cor = null;
+              continue;
+            }
+            referencia.status = "verificada";
+            referencia.integridade = "verificada";
+            referencia.cor = `#${hex(preenchimento.color.r)}${hex(preenchimento.color.g)}${hex(preenchimento.color.b)}`;
+          }
+
+          estado.atualizadoEm = new Date().toISOString();
+          fs.writeFileSync(caminho, JSON.stringify(estado, null, 2) + "\n");
+          NODE
+      - name: Registrar sincronizacao
+        run: |
+          if git diff --quiet -- state/figjam-referencias.json; then
+            echo "Nenhuma alteracao encontrada."
+            exit 0
+          fi
+          git config user.name "big-brain-sync"
+          git config user.email "big-brain-sync@users.noreply.github.com"
+          git add state/figjam-referencias.json
+          git commit -m "chore: sincroniza referencias FigJam"
+          git push
