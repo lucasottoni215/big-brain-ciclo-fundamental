@@ -5,38 +5,44 @@
     "bb:contexto-origem": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:175" },
       "notion": { "pagina": "3a18429c-9d4c-818a-b6cc-dc31160068aa" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:contexto-origem" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:gramatica-operacional": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:179" },
       "notion": { "pagina": "3a18429c-9d4c-816b-8cf8-ebd89c66a703" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:gramatica-operacional" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:baralho-apps": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:183" },
       "notion": { "pagina": "3a18429c-9d4c-8179-9e59-f9d9181e2b07" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:baralho-apps" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:compilador": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:187" },
       "notion": { "pagina": "3a18429c-9d4c-81eb-bca6-e7086a49c04d" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:compilador" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:componentes": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:191" },
       "notion": { "pagina": "3a18429c-9d4c-81d9-9887-d7da62025bf7" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:componentes" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:projecao-registros": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:195" },
       "notion": { "pagina": "3a18429c-9d4c-81d8-9821-d39d5ae857c3" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:projecao-registros" },
       "status": "referenciada",
-      "maturidade": { "fase": "notion", "cor": "#3DADFF" }
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     },
     "bb:tabelas-organizacoes-acesso": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "42:193" },
