@@ -1,13 +1,13 @@
 # Sincronizador de referencias FigJam
 
-Componente de visualizacao de maturidade. Ele le o catalogo publico de
-referencias do Ciclo Fundamental e aplica a cor da referencia ao elemento
-correspondente no FigJam.
+Componente de visualizacao de maturidade. Ele le os dois catalogos publicos do
+Ciclo Fundamental e aplica ao FigJam o estado publicado de cada referencia.
 
 ## Regra
 
-- Referencia `verificada`: guarda a cor original da nota e aplica a cor do
-  catalogo.
+- Referencia de integridade `verificada` ou referencia de maturidade
+  `referenciada`: guarda o estilo original e aplica fill, contorno e texto da
+  fase publicada.
 - Referencia em revisao: restaura a cor original guardada.
 - Nota removida: registra a ausencia na execucao, sem tentar recriar a nota.
 
@@ -24,19 +24,18 @@ comando explicito e preserva a cor anterior de cada nota.
 
 ## O que a execucao faz
 
-O plugin busca o catalogo publicado em
-`https://lucasottoni215.github.io/big-brain-ciclo-fundamental/state/figjam-referencias.json`.
+O plugin busca os catalogos publicados em:
 
-- Uma referencia com `status` e `integridade` iguais a `verificada` recebe a
-  cor publicada no catalogo.
+- `state/figjam-referencias.json`, para integridade do prototipo;
+- `state/figjam-notion-referencias.json`, para maturidade entre FigJam, Notion
+  e Supabase.
+
+- Uma referencia valida recebe a cor publicada no catalogo. A referencia de
+  maturidade prevalece quando o mesmo no aparece nos dois catalogos.
 - Uma referencia em revisao restaura a cor anterior, quando ela foi guardada
   por uma execucao anterior do plugin.
 - Uma nota ausente e somente contabilizada no resumo final; o plugin nao cria
   nem recria notas no FigJam.
-
-No estado publicado em 18/07/2026, a unica referencia (`posto`, nota `7:373`)
-esta marcada como `nota_ausente`. Portanto, a execucao esperada e
-`0 iluminadas, 0 restauradas, 1 ausentes`.
 
 ## Limite de automacao
 
