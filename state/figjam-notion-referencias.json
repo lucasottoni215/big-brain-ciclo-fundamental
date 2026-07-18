@@ -1,6 +1,6 @@
 {
-  "versao": 1,
-  "descricao": "Mapa manual e versionado entre as notas de documentacao do FigJam e as paginas conceituais do Notion.",
+  "versao": 2,
+  "descricao": "Mapa versionado entre a planta canonica do FigJam, a documentacao do Notion e os registros estruturados do Supabase.",
   "referencias": {
     "bb:contexto-origem": {
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "41:175" },
@@ -82,6 +82,104 @@
         "codigo": "cmp_registro_operacional",
         "registro": "bb11c4a1-1c33-46a1-abe6-3008cbb97fcb"
       },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:mandato": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:210" },
+      "notion": { "pagina": "3a18429c-9d4c-8190-b7f6-e3ca7e562ba9" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:mandato" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:posto": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:214" },
+      "notion": { "pagina": "3a18429c-9d4c-8159-9d21-e5736320a20c" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:posto" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:ambiente": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:218" },
+      "notion": { "pagina": "3a18429c-9d4c-81fd-ad45-f56c9198dfd4" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:ambiente" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:avatar": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:222" },
+      "notion": { "pagina": "3a18429c-9d4c-8129-ba11-dd7d0abc8bae" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:avatar" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:baralho": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:226" },
+      "notion": { "pagina": "3a18429c-9d4c-810c-9484-caab1eee8d15" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:baralho" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:dicionario-operacional": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:230" },
+      "notion": { "pagina": "3a18429c-9d4c-81e4-8e0f-cba1a221adb0" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:dicionario-operacional" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:ponto-de-contato": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:234" },
+      "notion": { "pagina": "3a18429c-9d4c-8171-9fd4-c8f2a0d79d25" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:ponto-de-contato" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:chamada": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:238" },
+      "notion": { "pagina": "3a18429c-9d4c-81fd-a904-d35644c10983" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:chamada" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:variaveis-operacionais": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:242" },
+      "notion": { "pagina": "3a18429c-9d4c-817f-acd1-f566f2f7b61f" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:variaveis-operacionais" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:funcoes-operacionais": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:246" },
+      "notion": { "pagina": "3a18429c-9d4c-817e-9043-c9d82f32166a" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:funcoes-operacionais" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:compilador": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:250" },
+      "notion": { "pagina": "3a18429c-9d4c-81ac-bae5-fb792845dffb" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:compilador" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:componentes": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:254" },
+      "notion": { "pagina": "3a18429c-9d4c-81a9-9af8-f9854347e9de" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:componentes" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:registro-operacional": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:258" },
+      "notion": { "pagina": "3a18429c-9d4c-819c-b07c-f551afdbe80a" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:registro-operacional" },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:bloco:projetor": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "55:262" },
+      "notion": { "pagina": "3a18429c-9d4c-816a-b5a1-f7a93503ddad" },
+      "supabase": { "tabela": "bb_semantic_references", "ref_id": "bb:bloco:projetor" },
       "status": "referenciada",
       "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     }
