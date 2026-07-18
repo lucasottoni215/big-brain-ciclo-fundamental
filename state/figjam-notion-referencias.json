@@ -67,6 +67,17 @@
       "notion": { "pagina": "3a18429c-9d4c-8156-8e82-ce97db547b1c" },
       "status": "referenciada",
       "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
+    },
+    "bb:componente:registro-operacional": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "49:203" },
+      "notion": { "pagina": "3a18429c-9d4c-81a6-a1bc-f5a0f9e35b02" },
+      "supabase": {
+        "tabela": "bb_components",
+        "codigo": "cmp_registro_operacional",
+        "registro": "bb11c4a1-1c33-46a1-abe6-3008cbb97fcb"
+      },
+      "status": "referenciada",
+      "maturidade": { "fase": "supabase", "cor": "#5AD8CC" }
     }
   }
 }
