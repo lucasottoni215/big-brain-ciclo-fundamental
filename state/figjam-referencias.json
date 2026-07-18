@@ -6,6 +6,13 @@
         "arquivo": "MlXt5pHE4aDUC3JOt0TOJG",
         "nota": "7:373"
       },
+      "prototipo": {
+        "arquivo": "index.html",
+        "marcador": "posto",
+        "assinatura": "3ead3b5baf275beba8c39353d3d43053f0f831dedbffdac9b84da14d396c2737"
+      },
+      "status": "verificada",
+      "integridade": "verificada",
       "cor": "#874fff"
     }
   }
