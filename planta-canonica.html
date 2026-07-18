@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Ciclo Fundamental - Planta Canonica</title>
+    <style>
+      :root {
+        --ink: #1e1e1e;
+        --paper: #ffffff;
+        --surface: #f7f7f7;
+        --line: #b3b3b3;
+        --muted: #666666;
+        --teal: #5ad8cc;
+        --teal-line: #369e94;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 14px/1.45 Inter, system-ui, sans-serif;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 64px;
+        padding: 16px clamp(20px, 4vw, 56px);
+        border-bottom: 1px solid var(--ink);
+      }
+
+      h1, h2, p { margin: 0; }
+      h1 { font-size: 17px; font-weight: 700; }
+      h2 { font-size: 13px; font-weight: 700; }
+
+      .identity,
+      .coverage {
+        color: var(--muted);
+        font: 12px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+
+      main {
+        width: min(1480px, 100%);
+        margin: 0 auto;
+        padding: 28px clamp(20px, 4vw, 56px) 48px;
+      }
+
+      .layer {
+        padding: 22px 0 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .layer:first-child { padding-top: 0; }
+      .layer:last-child { border-bottom: 0; }
+
+      .layer-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .layer-head p {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .blocks {
+        display: grid;
+        gap: 14px;
+      }
+
+      .origin { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .operation { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+      .projection { grid-template-columns: minmax(200px, 1fr); max-width: 220px; margin: 0 auto; }
+
+      .block {
+        display: grid;
+        min-width: 0;
+        min-height: 112px;
+        place-items: center;
+        padding: 16px;
+        border: 2px solid var(--line);
+        border-radius: 4px;
+        background: var(--paper);
+        color: var(--ink);
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .block[data-maturity="supabase"] {
+        border-color: var(--teal-line);
+        background: var(--teal);
+        color: var(--paper);
+      }
+
+      .block strong { font-size: 14px; font-weight: 600; }
+
+      @media (max-width: 1100px) {
+        .origin { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .operation { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 680px) {
+        header,
+        .layer-head { align-items: flex-start; flex-direction: column; }
+        .origin,
+        .operation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .projection { max-width: none; }
+      }
+
+      @media (max-width: 420px) {
+        .origin,
+        .operation { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Ciclo Fundamental</h1>
+        <p class="identity">planta canonica estrutural v0.2</p>
+      </div>
+      <p class="coverage" id="coverage">verificando referencias</p>
+    </header>
+
+    <main>
+      <section class="layer" aria-labelledby="origin-title">
+        <div class="layer-head">
+          <h2 id="origin-title">Contexto de origem</h2>
+          <p>camadas declaradas antes da chamada</p>
+        </div>
+        <div class="blocks origin">
+          <article class="block" data-ref-id="bb:bloco:mandato"><strong>Mandato</strong></article>
+          <article class="block" data-ref-id="bb:bloco:posto"><strong>Posto</strong></article>
+          <article class="block" data-ref-id="bb:bloco:ambiente"><strong>Ambiente</strong></article>
+          <article class="block" data-ref-id="bb:bloco:avatar"><strong>Avatar</strong></article>
+          <article class="block" data-ref-id="bb:bloco:baralho"><strong>Baralho</strong></article>
+          <article class="block" data-ref-id="bb:bloco:dicionario-operacional"><strong>Dicionario operacional</strong></article>
+        </div>
+      </section>
+
+      <section class="layer" aria-labelledby="operation-title">
+        <div class="layer-head">
+          <h2 id="operation-title">Ciclo operacional</h2>
+          <p>composicao deterministica</p>
+        </div>
+        <div class="blocks operation">
+          <article class="block" data-ref-id="bb:bloco:ponto-de-contato"><strong>Ponto de contato</strong></article>
+          <article class="block" data-ref-id="bb:bloco:chamada"><strong>Chamada</strong></article>
+          <article class="block" data-ref-id="bb:bloco:variaveis-operacionais"><strong>Variaveis operacionais</strong></article>
+          <article class="block" data-ref-id="bb:bloco:funcoes-operacionais"><strong>Funcoes operacionais</strong></article>
+          <article class="block" data-ref-id="bb:bloco:compilador"><strong>Compilador</strong></article>
+          <article class="block" data-ref-id="bb:bloco:componentes"><strong>Componentes</strong></article>
+          <article class="block" data-ref-id="bb:bloco:registro-operacional"><strong>Registro operacional</strong></article>
+        </div>
+      </section>
+
+      <section class="layer" aria-labelledby="projection-title">
+        <div class="layer-head">
+          <h2 id="projection-title">Projecao</h2>
+          <p>somente leitura</p>
+        </div>
+        <div class="blocks projection">
+          <article class="block" data-ref-id="bb:bloco:projetor"><strong>Projetor</strong></article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (async function synchronizeMaturity() {
+        const response = await fetch("./state/figjam-notion-referencias.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("catalog unavailable");
+
+        const catalog = await response.json();
+        const blocks = Array.from(document.querySelectorAll("[data-ref-id]"));
+        let verified = 0;
+
+        for (const block of blocks) {
+          const reference = catalog.referencias?.[block.dataset.refId];
+          const turquoise = reference?.status === "referenciada"
+            && reference?.maturidade?.fase === "supabase"
+            && reference?.maturidade?.cor?.toUpperCase() === "#5AD8CC";
+
+          if (!turquoise) continue;
+          block.dataset.maturity = "supabase";
+          block.dataset.figmaNode = reference.figjam?.nota || "";
+          block.dataset.notionPage = reference.notion?.pagina || "";
+          block.dataset.supabaseRef = reference.supabase?.ref_id || block.dataset.refId;
+          verified += 1;
+        }
+
+        document.getElementById("coverage").textContent = `${verified}/${blocks.length} referencias turquesa`;
+      })().catch(() => {
+        document.getElementById("coverage").textContent = "referencias indisponiveis";
+      });
+    </script>
+  </body>
+</html>
