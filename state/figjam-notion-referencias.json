@@ -51,6 +51,11 @@
       "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "42:205" },
       "notion": { "pagina": "3a18429c-9d4c-815d-8c38-e6c5a93f8ca2" },
       "status": "referenciada"
+    },
+    "bb:composicao-operacional": {
+      "figjam": { "arquivo": "MlXt5pHE4aDUC3JOt0TOJG", "nota": "43:200" },
+      "notion": { "pagina": "3a18429c-9d4c-8156-8e82-ce97db547b1c" },
+      "status": "referenciada"
     }
   }
 }
