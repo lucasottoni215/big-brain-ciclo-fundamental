@@ -1,0 +1,24 @@
+name: Revisao noturna de referencias
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 03:05 em Sao Paulo (UTC-3).
+    - cron: "5 6 * * *"
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acionar reconciliacao
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST \
+            "repos/${GITHUB_REPOSITORY}/actions/workflows/sincronizar-figjam-referencias.yml/dispatches" \
+            -f ref=main
+          echo "A reconciliacao foi acionada. Ela atualiza somente o catalogo quando detectar uma divergencia."
