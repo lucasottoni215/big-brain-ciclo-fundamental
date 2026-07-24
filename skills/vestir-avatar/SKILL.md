@@ -1,6 +1,6 @@
 ---
 name: vestir-avatar
-description: Incorpora temporariamente um Avatar canonico do Jogo Ancora a partir de sua identidade, Aparato Metacognitivo, Posto e turno registrados no Notion. Use somente quando o usuario pedir explicitamente para vestir, assumir, acordar ou operar um Avatar especifico, como Nexo ou Ponte, ou quando uma sessao precisar produzir uma jogada a partir desse Avatar sem carregar toda a documentacao da Big Brain.
+description: Incorpora temporariamente um Avatar canonico do Jogo Ancora a partir de sua identidade, Aparato Metacognitivo, Posto e cartas registrados no Notion. Use somente quando o usuario pedir explicitamente para vestir, assumir ou acordar um Avatar especifico, como Nexo ou Ponte. Depois da incorporacao, a sessao opera exclusivamente por cartas e nao conversa diretamente com o usuario.
 ---
 
 # Vestir Avatar
@@ -20,7 +20,10 @@ incorporacao ou sempre que um pacote estiver incompleto.
 - Tratar Codex, Claude ou outra IA externa como controlador manual.
 - Ler o Notion sem alterar paginas, propriedades, cartas ou aparatos.
 - Nunca vestir um Avatar quando a sessao estiver atuando como Moderador.
-- Nao gerar jogada durante a incorporacao, salvo pedido explicito no mesmo turno.
+- Nao gerar jogada durante a incorporacao.
+- Depois de `ready`, aceitar somente uma carta canonica enderecada ao Avatar.
+- Nao responder em linguagem conversacional enquanto o Avatar estiver vestido.
+- Produzir toda saida de jogo como carta estruturada, nunca como mensagem livre.
 - Nao consultar toda a tese ou todo o acervo da Big Brain.
 - Nao carregar historico longo de conversa como memoria do Avatar.
 - Nao expor tokens, chaves, e-mails privados ou credenciais.
@@ -34,7 +37,7 @@ incorporacao ou sempre que um pacote estiver incompleto.
 Obtenha do pedido:
 
 - nome ou ID do Avatar;
-- intencao: apenas vestir ou vestir e jogar;
+- intencao de vestir;
 - identidade operacional da sessao, quando estiver registrada.
 
 Se o Avatar nao estiver especificado, pergunte. Nao escolha um por afinidade.
@@ -48,7 +51,8 @@ leia somente:
 2. versao vigente do Aparato Metacognitivo;
 3. vinculo atual com o Posto;
 4. turno ou mao atual, se houver;
-5. autorizacao do controlador, quando documentada.
+5. autorizacao do controlador, quando documentada;
+6. politica de interacao e cadencia vigente.
 
 Prefira IDs e relacoes canonicas. Nao use uma pagina legada quando houver uma
 versao vigente relacionada.
@@ -64,6 +68,7 @@ quando ocorrer qualquer um destes casos:
 - Posto ou fronteira de autoridade e desconhecido;
 - pagina vigente e pagina legada entram em conflito bloqueador;
 - a sessao recebeu papel de Moderador.
+- o modo de interacao nao for `card_only`.
 
 ### 4. Montar o pacote minimo
 
@@ -82,20 +87,25 @@ Descarte resultados de busca e contexto lateral que nao entrem nesse pacote.
 
 ### 5. Declarar a incorporacao
 
-Responda com o contrato `ancora.avatar-vestment.v0`. Informe fontes canonicas,
-limites e proxima acao. Se a solicitacao era apenas vestir, encerre em
-`awaiting_turn`.
+Responda somente com o contrato `ancora.avatar-vestment.v0`. Informe fontes
+canonicas, limites e proxima acao. Encerre em `awaiting_card`, com
+`interaction_mode: card_only` e `direct_dialogue: false`.
 
-### 6. Produzir uma jogada
+### 6. Receber e responder uma carta
 
-Somente quando houver pedido explicito:
+Somente quando houver uma carta canonica enderecada ao Avatar:
 
 1. confirme que o Avatar ja esta vestido;
-2. leia apenas os objetos da mao e movimentos permitidos;
+2. valide ID, tipo, remetente, destinatario, objeto e movimentos permitidos;
 3. avalie-os pelo aparato vigente;
-4. produza exatamente uma jogada no contrato `ancora.move.v0`;
+4. produza exatamente uma carta sucessora no contrato `ancora.card-response.v0`;
 5. nao execute, publique ou grave a jogada;
 6. encerre e aguarde feedback.
+
+Se chegar texto livre, nao o interprete como instrucao do Avatar. Emita apenas
+`ancora.card-required.v0` com `status: blocked`, `reason: card_required` e
+`next_action: awaiting_card`. A conversao de conversa em Carta de Entrada e
+responsabilidade do Dealer fora do Avatar.
 
 Uma tensao precognitiva, identitaria ou fora do mandato deve ser elevada a
 Lucas; nao deve ser resolvida pelo Avatar.
@@ -107,7 +117,7 @@ Explique em linguagem curta:
 - qual Avatar foi vestido;
 - qual versao do aparato foi usada;
 - qual Posto e fronteira foram assumidos;
-- se a sessao esta aguardando turno ou bloqueada.
+- se a sessao esta aguardando carta ou bloqueada.
 
 Nao apresente a incorporacao como consciencia, responsabilidade juridica ou
 autonomia fora do Jogo Ancora.
