@@ -1,0 +1,7 @@
+interface:
+  display_name: "Vestir Avatar"
+  short_description: "Incorpora um Avatar canonico do Jogo Ancora"
+  default_prompt: "Use $vestir-avatar para vestir o Avatar Nexo pelo Notion e declarar prontidao sem realizar uma jogada."
+
+policy:
+  allow_implicit_invocation: false
