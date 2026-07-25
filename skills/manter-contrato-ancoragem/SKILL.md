@@ -28,6 +28,9 @@ Atuar como mantenedor documental da propria Fundacao. Criar, versionar e manter 
 - Nao importar conversas, arquivos ou objetos pessoais.
 - Nao acessar, inferir ou expor Assinatura Cognitiva.
 - Nao alterar diretamente o Notion canonico.
+- Registrar no Documento do Drive pessoas, objetos, Postos e vinculos factualmente encontrados dentro do escopo da Fundacao.
+- Distinguir `observed`, `inferred`, `declared`, `confirmed` e `contested`; nao apresentar inferencia como confirmacao.
+- Anexar origem ou evidencia minima a cada registro novo e incluir os registros no pacote enviado a Ancora.
 - Autenticar no Google Drive antes de criar, atualizar ou submeter uma versao.
 - Nao converter ausencia de informacao em autorizacao.
 - Preservar versoes e justificativas no historico do Drive.
@@ -53,13 +56,15 @@ Usar: `initial_draft`, `factual_enrichment`, `representation_change`, `mandate_c
 
 Preencher o esquema canonico. Marcar campos desconhecidos como `pending`. Mudanca estrutural permanece `awaiting_confirmation` ate manifestacao do lider competente.
 
+Durante o levantamento, registrar candidatos a pessoa, objeto, Posto e vinculo no proprio contrato. Uma pessoa pode ser registrada mesmo sem e-mail ou WhatsApp; nesse caso, separar identidade de presenca e informar como ela foi inferida, declarada ou observada. Nao criar Avatar automaticamente.
+
 ### 5. Versionar no Drive
 
 Editar o Documento do Contrato no Drive sem apagar a rastreabilidade da versao anterior. Registrar autor tecnico, conta autenticada, horario, motivo e diferencas. Hash e identificador de revisao sao evidencias adicionais quando disponiveis.
 
 ### 6. Submeter a Ancora
 
-Emitir `ancora.contract-submission.v0` com Documento do Drive, conta autenticada, versao, confirmacoes e evidencias. Ancora valida integridade, procedencia e relacoes e incorpora a versao no Notion. Submissao nao equivale a aceite.
+Emitir `ancora.contract-submission.v0` com Documento do Drive, conta autenticada, versao, confirmacoes, registros candidatos e evidencias. Ancora valida integridade, procedencia e relacoes e incorpora a versao e os registros aceitos no Notion. Submissao nao equivale a aceite.
 
 Se houver correcao, o agente cria nova versao no Drive e a submete novamente. Ancora nunca corrige silenciosamente o contrato incorporado.
 

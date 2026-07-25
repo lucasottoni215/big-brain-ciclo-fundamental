@@ -47,7 +47,27 @@ provenance:
   change_type: initial_draft
   change_reason: text
   previous_version_ref: null
+
+registrations:
+  people: []
+  objects: []
+  posts: []
+  relations: []
 ```
+
+Cada item de `registrations` usa, no minimo:
+
+```yaml
+registration_id: registration-...
+kind: person | object | post | relation
+name: text
+factual_status: observed | inferred | declared | confirmed | contested
+evidence_ref: evidence-or-drive-location
+presence_mode: direct | indirect | assisted | observed | not-applicable
+notes: text-or-null
+```
+
+Pessoa sem e-mail, WhatsApp ou conta digital pode ser registrada. Identidade e presenca permanecem separadas. O registro nao cria Avatar nem autoridade por si so.
 
 ## Pacote de submissao
 
@@ -64,6 +84,12 @@ provenance:
   "content_hash": "value-or-null",
   "maintainer_agent_ref": "agent-...",
   "confirmation_status": "confirmed",
+  "registrations": {
+    "people": [],
+    "objects": [],
+    "posts": [],
+    "relations": []
+  },
   "evidence_refs": [],
   "requested_action": "validate_and_incorporate",
   "canonical_write_requested": true
