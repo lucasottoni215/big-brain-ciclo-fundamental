@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conectar borda pessoal"
+  short_description: "Conecta GPT e WhatsApp pessoais à borda contratual"
+  default_prompt: "Conecte meus canais pessoais à borda do Big Brain sem importar histórico privado nem ultrapassar meu mandato."
