@@ -53,6 +53,12 @@ pessoa para transportar atos operacionais formais. Ela nao importa historico
 pessoal, nao acessa Assinatura Cognitiva e nao concede acesso direto ao Notion
 ou ao Core.
 
+A skill
+[manter-contrato-ancoragem](skills/manter-contrato-ancoragem/SKILL.md) permite
+que o agente de cada Fundacao crie e mantenha sua propria instancia contratual
+no Documento de Borda. Ancora recebe, valida e registra a versao, sem redigir
+ou decidir o conteudo pela Fundacao.
+
 Para instalar uma skill no Codex:
 
 ```bash

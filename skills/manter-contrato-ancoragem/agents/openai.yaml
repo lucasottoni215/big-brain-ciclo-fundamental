@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manter Contrato de Ancoragem"
+  short_description: "Cria e mantém o contrato da própria Fundação"
+  default_prompt: "Mantenha o Contrato de Ancoragem desta Fundação com base apenas em seus objetos, Mandatos e confirmações verificáveis."
