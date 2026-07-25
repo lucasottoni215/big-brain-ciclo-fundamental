@@ -5,7 +5,7 @@ description: Cria, revisa e mantem no Google Drive a instancia do Contrato de An
 
 # Manter Contrato de Ancoragem
 
-Leia [references/contract-schema.md](references/contract-schema.md) antes de criar a primeira versao ou alterar origem, representacao, Posto ou Mandato.
+Leia [references/human-contract-template.md](references/human-contract-template.md) antes de escrever o documento compartilhado. Leia [references/contract-schema.md](references/contract-schema.md) somente para preparar o pacote tecnico enviado a Ancora.
 
 ## Papel
 
@@ -18,6 +18,14 @@ Atuar como mantenedor documental da propria Fundacao. Criar, versionar e manter 
 - Conta e pasta nao definem a autoridade; fornecem atribuicao operacional contestavel.
 - A autoridade deriva da cadeia de Fundacao, Objeto, Posto, Mandato e confirmacoes.
 - O Notion incorpora a versao validada e seu estado canonico; nao substitui o documento do Drive.
+
+## Separacao entre humano e tecnico
+
+- Escrever o contrato do Drive para leitura de pessoas, em linguagem natural, curta e direta.
+- Nao inserir no contrato JSON, YAML, IDs internos, hashes, nomes de protocolo, estados de maquina, URLs do Notion ou instrucoes para agentes.
+- Nao usar termos SACF quando uma frase comum transmitir o mesmo sentido.
+- Manter referencias tecnicas, proveniencia estruturada e estados operacionais somente no pacote de submissao e no Notion.
+- O contrato humano deve explicar quem participa, o que esta sendo organizado, responsabilidades, limites, funcionamento pratico e pendencias reais.
 
 ## Regras
 
@@ -52,22 +60,22 @@ Ler somente o reconhecimento factual da Fundacao, a versao vigente no Drive, obj
 
 Usar: `initial_draft`, `factual_enrichment`, `representation_change`, `mandate_change`, `object_change`, `post_change`, `correction` ou `contest`.
 
-### 4. Preparar e confirmar a versao
+### 4. Preparar o texto humano e confirmar a versao
 
-Preencher o esquema canonico. Marcar campos desconhecidos como `pending`. Mudanca estrutural permanece `awaiting_confirmation` ate manifestacao do lider competente.
+Usar o modelo humano padrao. Omitir campos tecnicos e secoes vazias. Expressar informacao ausente como uma pendencia compreensivel, apenas quando ela importar para as pessoas. Mudanca estrutural permanece sem confirmacao ate manifestacao do lider competente.
 
 Durante o levantamento, registrar candidatos a pessoa, objeto, Posto e vinculo no proprio contrato. Uma pessoa pode ser registrada mesmo sem e-mail ou WhatsApp; nesse caso, separar identidade de presenca e informar como ela foi inferida, declarada ou observada. Nao criar Avatar automaticamente.
 
 ### 5. Versionar no Drive
 
-Editar o Documento do Contrato no Drive sem apagar a rastreabilidade da versao anterior. Registrar autor tecnico, conta autenticada, horario, motivo e diferencas. Hash e identificador de revisao sao evidencias adicionais quando disponiveis.
+Editar o Documento do Contrato no Drive sem apagar a rastreabilidade da versao anterior. O historico do Drive preserva autoria e alteracoes. No texto visivel, mostrar apenas uma data de atualizacao e, quando util, uma frase simples sobre o que mudou.
 
 ### 6. Submeter a Ancora
 
-Emitir `ancora.contract-submission.v0` com Documento do Drive, conta autenticada, versao, confirmacoes, registros candidatos e evidencias. Ancora valida integridade, procedencia e relacoes e incorpora a versao e os registros aceitos no Notion. Submissao nao equivale a aceite.
+Preparar separadamente `ancora.contract-submission.v0` com Documento do Drive, conta autenticada, versao, confirmacoes, registros candidatos e evidencias. Nunca colar esse pacote no contrato humano. Ancora valida integridade, procedencia e relacoes e incorpora a versao e os registros aceitos no Notion. Submissao nao equivale a aceite.
 
 Se houver correcao, o agente cria nova versao no Drive e a submete novamente. Ancora nunca corrige silenciosamente o contrato incorporado.
 
 ## Saida
 
-Produzir uma versao contratual no Google Drive e um pacote de submissao conforme o esquema. Quando bloqueado, retornar motivo e campos faltantes, preservando o contrato vigente.
+Produzir duas saidas separadas: um contrato humano no Google Drive e um pacote tecnico para Ancora. Quando bloqueado, explicar a pendencia em linguagem simples no documento somente se ela afetar os participantes; detalhes tecnicos ficam no pacote.

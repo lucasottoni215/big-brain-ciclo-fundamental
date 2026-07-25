@@ -1,6 +1,8 @@
-# Esquema do Contrato de Ancoragem V0
+# Esquema tecnico de submissao do Contrato de Ancoragem V0
 
-## Documento contratual no Google Drive
+Este arquivo descreve a ficha tecnica enviada a Ancora. Nunca colar YAML, JSON, IDs, hashes, estados ou referencias internas no contrato humano do Google Drive. O texto compartilhado deve seguir `human-contract-template.md`.
+
+## Representacao tecnica interna
 
 ```yaml
 protocol: ancora.contract.v0
