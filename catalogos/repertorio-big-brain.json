@@ -1,0 +1,62 @@
+{
+  "schema": "big-brain.repository-catalog.v1",
+  "organization": "Big Brain",
+  "account": "lucasottoni215",
+  "reviewed_at": "2026-07-24",
+  "states": {
+    "vigente": "Frente ativa, alinhada ao estado atual e autorizada a evoluir.",
+    "legado": "Evidencia, origem ou componente anterior preservado para absorcao seletiva.",
+    "abandonado": "Objeto sem mandato ativo, preservado ate decisao explicita de arquivamento."
+  },
+  "repositories": [
+    {
+      "name": "big-brain-ciclo-fundamental",
+      "url": "https://github.com/lucasottoni215/big-brain-ciclo-fundamental",
+      "status": "vigente",
+      "role": "Nucleo publico vigente e prototipo do ciclo fundamental",
+      "entrypoint": true
+    },
+    {
+      "name": "tutoriaisbigbrainpublic",
+      "url": "https://github.com/lucasottoni215/tutoriaisbigbrainpublic",
+      "status": "legado",
+      "role": "Registro didatico em video",
+      "entrypoint": false
+    },
+    {
+      "name": "redirecionamentowhatsapp",
+      "url": "https://github.com/lucasottoni215/redirecionamentowhatsapp",
+      "status": "legado",
+      "role": "Artefato operacional anterior de redirecionamento para WhatsApp",
+      "entrypoint": false
+    },
+    {
+      "name": "alexandreimagem",
+      "url": "https://github.com/lucasottoni215/alexandreimagem",
+      "status": "legado",
+      "role": "Material anterior de comunicacao visual",
+      "entrypoint": false
+    },
+    {
+      "name": "html-portifolio",
+      "url": "https://github.com/lucasottoni215/html-portifolio",
+      "status": "legado",
+      "role": "Presenca pessoal anterior ligada a historia do criador",
+      "entrypoint": false
+    },
+    {
+      "name": "resume",
+      "url": "https://github.com/lucasottoni215/resume",
+      "status": "abandonado",
+      "role": "Repositorio vazio sem funcao ativa identificada",
+      "entrypoint": false
+    },
+    {
+      "name": "vercelsite",
+      "url": "https://github.com/lucasottoni215/vercelsite",
+      "status": "abandonado",
+      "role": "Repositorio vazio sem funcao ativa identificada",
+      "entrypoint": false
+    }
+  ]
+}
